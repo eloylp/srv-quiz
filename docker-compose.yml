@@ -1,0 +1,16 @@
+version: "3"
+services:
+  nodejs:
+    user: node
+    image: node:boron
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 80:8000
+    depends_on:
+      - "mongodb"
+  mongodb:
+    image: mongo:latest
+    expose:
+      - "27017"
+    command: "--storageEngine wiredTiger"

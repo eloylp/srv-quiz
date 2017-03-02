@@ -1,0 +1,29 @@
+{
+  "name": "srv-quiz",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get your application up and running.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./bin/www --exec babel-node --presets es2015,stage-2",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/eloylp/srv-quiz.git"
+  },
+  "author": "eloylp",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/eloylp/srv-data-dictionary#readme",
+  "dependencies": {
+    "body-parser": "~1.16.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.0",
+    "express": "^4.14.1",
+    "morgan": "^1.8.1",
+    "waterline": "^0.11.9"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0"
+  }
+}
