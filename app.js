@@ -4,10 +4,17 @@
 const express = require("express");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
-const index = require("./routes/index");
-const quiz = require("./routes/quiz");
+const index = require("./web/routes/index");
+const quiz = require("./web/routes/quiz");
+const config = require("./config/config");
 
 const app = express();
+
+app.set('config', config);
+app.set('port', config.port);
+app.set('env', config.environment);
+app.set('json spaces', config.jsonSpaces);
+app.set('x-powered-by', config.xPoweredBy);
 
 
 app.use(logger('dev'));
