@@ -9,16 +9,16 @@ module.exports = class Quiz {
         this._tags = tags;
     }
 
-    set question(question) {
-        this._question = question
+    get question(question) {
+        return this._question;
     }
 
-    set correctAnswers(correctAnswers) {
-        this._correctAnswers = correctAnswers;
+    get correctAnswers(correctAnswers) {
+        return this._correctAnswers;
     }
 
-    set tags(tags) {
-        this._tags = tags;
+    get tags(tags) {
+        return this._tags;
     }
 }
 
