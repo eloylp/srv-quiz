@@ -3,8 +3,8 @@
 const express = require('express');
 const router = express.Router();
 
-let indexController = require('./../controller/indexController')
-const IndexController = new indexController();
+let IndexControllerC = require('./../controller/indexController')
+const IndexController = new IndexControllerC();
 
 /* GET home page. */
 router.get('/', IndexController.getIndex);
