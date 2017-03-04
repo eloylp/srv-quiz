@@ -2,15 +2,12 @@ const mongoAdapter = require('sails-mongo');
 
 module.exports = {
 
-    // Setup Adapters
-    // Creates named adapters that have been required
+
     adapters: {
         'default': mongoAdapter,
         mongoAdapter: mongoAdapter
     },
 
-    // Build Connections Config
-    // Setup connections using the named adapter configs
     connections: {
         mongo: {
             adapter: 'mongoAdapter',

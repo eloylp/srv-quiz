@@ -5,6 +5,8 @@ const express = require("express");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 const config = require("./config/config");
+const RepositoryBuilderC = require("./repository/RepositoryBuilder");
+const RepositoryBuilder = new RepositoryBuilderC();
 
 const app = express();
 
@@ -48,4 +50,11 @@ app.use(function (err, req, res) {
     res.render('error');
 });
 
-module.exports = app;
+/// Ensure repository and connections are up until server starts.
+module.exports = RepositoryBuilder.build().then((repositories) => {
+
+    app.repositories = repositories;
+    return app;
+}, (err) => {
+    throw err;
+});
