@@ -3,20 +3,12 @@
 
 module.exports = class QuizController {
 
-    addQuiz(req, res, next) {
+    add(req, res, next) {
 
     }
 
-    checkQuiz(req, res, next) {
-
-    }
-
-    getQuiz(req, res, next) {
+    get(req, res, next) {
         res.send('quiz');
-    }
-
-    quizStats(req, res, next) {
-
     }
 }
 
