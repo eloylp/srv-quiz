@@ -4,8 +4,6 @@
 const express = require("express");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
-const index = require("./web/routes/index");
-const quiz = require("./web/routes/quiz");
 const config = require("./config/config");
 
 const app = express();
@@ -19,11 +17,16 @@ app.set('x-powered-by', config.xPoweredBy);
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
 
+const index = require("./web/routes/index");
+const quiz = require("./web/routes/quiz");
+const quizCheck = require("./web/routes/quizCheck");
+const quizStats = require("./web/routes/quizStats");
 
 app.use('/', index);
 app.use('/quiz', quiz);
+app.use('/quizCheck', quizCheck);
+app.use('/quizStats', quizStats);
 
 
 // catch 404 and forward to error handler
