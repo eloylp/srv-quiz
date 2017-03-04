@@ -1,0 +1,10 @@
+{
+  "question": "Which planet is nearest the sun?",
+  "correctAnswers": [
+    "Mercury",
+    "mercury"
+  ],
+  "tags": [
+    "science"
+  ]
+}
