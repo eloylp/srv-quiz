@@ -1,10 +1,12 @@
-version: "3"
+version: "2"
 services:
   nodejs:
+    image: quiz-server
     user: node
-    image: node:boron
-    volumes:
-      - .:/usr/src/app
+    working_dir: /usr/src/app
+    build:
+      context: .
+      dockerfile: docker/node/Dockerfile
     ports:
       - 80:8000
     depends_on:
