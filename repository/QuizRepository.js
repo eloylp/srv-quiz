@@ -10,7 +10,12 @@ module.exports = class QuizRepository {
 
     }
 
-    add() {
+    add(quiz) {
 
+        return this._orm.create({
+            "quiz": quiz.question,
+            "correct_answers": quiz.correctAnswers,
+            "tags": quiz.tags
+        });
     }
 }

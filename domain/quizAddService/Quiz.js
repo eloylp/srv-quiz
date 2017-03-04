@@ -4,20 +4,20 @@ module.exports = class Quiz {
 
     constructor(question, correctAnswers, tags) {
 
-        this._question = this.question;
+        this._question = question;
         this._correctAnswers = correctAnswers;
         this._tags = tags;
     }
 
-    get question(question) {
+    get question() {
         return this._question;
     }
 
-    get correctAnswers(correctAnswers) {
+    get correctAnswers() {
         return this._correctAnswers;
     }
 
-    get tags(tags) {
+    get tags() {
         return this._tags;
     }
 }
