@@ -12,8 +12,8 @@ module.exports = {
     // Build Connections Config
     // Setup connections using the named adapter configs
     connections: {
-        mongoAdapter: {
-            adapter: 'mongo',
+        mongo: {
+            adapter: 'mongoAdapter',
             host: 'mongodb',
             database: 'quiz'
         }
