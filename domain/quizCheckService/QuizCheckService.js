@@ -7,8 +7,8 @@ module.exports = class QuizCheckService {
         this._quizRepository = quizRepository;
     }
 
-    checkQuiz(quiz) {
+    check(quiz) {
 
-        return this._quizRepository.checkQuiz(quiz);
+        return this._quizRepository.get(quiz);
     }
 }

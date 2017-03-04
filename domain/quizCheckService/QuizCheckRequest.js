@@ -2,9 +2,10 @@
 
 module.exports = class QuizCheckRequest {
 
-    constructor(quizId, quizResponse) {
+    constructor(quizId, quizResponse, participant) {
         this._quizId = quizId
         this._quizResponse = quizResponse
+        this._participant = participant
     }
 
     get quizId() {
@@ -13,5 +14,9 @@ module.exports = class QuizCheckRequest {
 
     get quizResponse() {
         return this._quizResponse;
+    }
+
+    get participant() {
+        return this._participant;
     }
 }

@@ -7,8 +7,8 @@ module.exports = class QuizAddService {
         this._quizRepository = quizRepository;
     }
 
-    addQuiz(quiz) {
+    add(quiz) {
 
-        return this._quizRepository.addQuiz(quiz);
+        return this._quizRepository.add(quiz);
     }
 }

@@ -7,8 +7,8 @@ module.exports = class QuizListService {
         this._quizRepository = quizRepository;
     }
 
-    listQuiz(quiz) {
+    listQuiz() {
 
-        return this._quizRepository.listQuiz();
+        return this._quizRepository.get();
     }
 }
