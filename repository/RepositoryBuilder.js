@@ -14,7 +14,7 @@ module.exports = class RepositoryBuilder {
 
         return new Promise((resolve, reject) => {
 
-            var orm = new Waterline();
+            let orm = new Waterline();
 
             orm.loadCollection(WaterlineQuizModel);
             orm.loadCollection(WaterlineQuizResponseModel);
