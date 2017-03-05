@@ -8,9 +8,10 @@ module.exports = Waterline.Collection.extend({
 
     attributes: {
 
-        quizId: 'string',
-        wasCorrect: 'boolean',
-        response: 'string',
-        participant: 'string'
+        quiz_id: 'string',
+        quiz_response: 'string',
+        participant: 'string',
+        is_valid: 'boolean',
+        response_needed: 'array'
     }
 })
