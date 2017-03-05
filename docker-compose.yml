@@ -4,6 +4,8 @@ services:
     image: quiz-server
     user: node
     working_dir: /usr/src/app
+    environment:
+      - MONGO_HOST=mongodb
     build:
       context: .
       dockerfile: docker/node/Dockerfile

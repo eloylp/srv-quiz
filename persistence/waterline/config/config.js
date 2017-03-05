@@ -1,3 +1,4 @@
+const config = require('./../../../config/config');
 const mongoAdapter = require('sails-mongo');
 
 module.exports = {
@@ -11,7 +12,7 @@ module.exports = {
     connections: {
         mongo: {
             adapter: 'mongoAdapter',
-            host: 'mongodb',
+            host: config.mongoHost,
             database: 'quiz'
         }
     },
