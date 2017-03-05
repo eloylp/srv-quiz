@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
 
+curl -X POST http://$1/quizzes -d @quizes.json --header "Content-Type: application/json"
 
-for j in $(ls quizes); do
-
-    curl -X POST http://$1/quizzes -d @quizes/$j --header "Content-Type: application/json"
-
-done
