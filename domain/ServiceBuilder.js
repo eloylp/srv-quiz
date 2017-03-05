@@ -1,6 +1,6 @@
 const QuizAddServiceC = require('./quizAddService/QuizAddService');
 const QuizListServiceC = require('./quizListService/QuizListService');
-const QuizCheckServiceC = require('./quizCheckService/QuizCheckService');
+const QuizResponseServiceC = require('./quizResponseService/QuizResponseService');
 const RepositoryBuilderC = require('./../repository/RepositoryBuilder');
 
 module.exports = class ServiceBuilder {
@@ -14,7 +14,7 @@ module.exports = class ServiceBuilder {
             repositoryBuilder.build().then((repositories) => {
                 resolve({
                     quizAddService: new QuizAddServiceC(repositories.quiz),
-                    quizCheckService: new QuizCheckServiceC(repositories.quiz, repositories.quizResponse),
+                    quizResponseService: new QuizResponseServiceC(repositories.quiz, repositories.quizResponse),
                     quizListService: new QuizListServiceC(repositories.quiz)
                 });
 

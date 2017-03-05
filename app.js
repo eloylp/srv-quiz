@@ -21,14 +21,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 
 const index = require("./web/routes/index");
-const quiz = require("./web/routes/quiz");
-const quizCheck = require("./web/routes/quizCheck");
-const quizStats = require("./web/routes/quizStats");
+const quizzes = require("./web/routes/quizzes");
+const quizCheck = require("./web/routes/quizResponse");
+const quizzesStats = require("./web/routes/quizzesStats");
 
 app.use('/', index);
-app.use('/quiz', quiz);
+app.use('/quizzes', quizzes);
 app.use('/quizCheck', quizCheck);
-app.use('/quizStats', quizStats);
+app.use('/quizzes/stats', quizzesStats);
 
 
 // catch 404 and forward to error handler

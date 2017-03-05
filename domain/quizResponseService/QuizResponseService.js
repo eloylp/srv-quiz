@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = class QuizCheckService {
+module.exports = class QuizResponseService {
 
     constructor(quizRepository, quizResponseRepository) {
 

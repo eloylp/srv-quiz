@@ -1,8 +1,8 @@
 'use strict';
 
-const QuizResponseC = require('./../../domain/quizCheckService/QuizResponse');
+const QuizResponseC = require('./../../domain/quizResponseService/QuizResponse');
 
-module.exports = class QuizCheckController {
+module.exports = class QuizResponseController {
 
     check(req, res, next) {
 
@@ -12,7 +12,7 @@ module.exports = class QuizCheckController {
             req.body.participant
         );
 
-        req.app.services.quizCheckService.check(quizResponse).then((quizResponseSaved) => {
+        req.app.services.quizResponseService.check(quizResponse).then((quizResponseSaved) => {
             res.json(quizResponseSaved);
 
         }).catch((err) => {

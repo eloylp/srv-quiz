@@ -1,6 +1,6 @@
 'use strict';
 
-const QuizResponseC = require('./../domain/quizCheckService/QuizResponse');
+const QuizResponseC = require('./../domain/quizResponseService/QuizResponse');
 
 module.exports = class QuizResponseMapper {
 
