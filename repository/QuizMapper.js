@@ -8,27 +8,28 @@ module.exports = class QuizMapper {
 
         return new Promise((resolve, reject) => {
 
-            if (Array.isArray(quiz)) {
+            var fillOne = function (quiz) {
 
-                var mapping = [];
-                for (let i = 0, length = quiz.length; i < length; i++) {
-
-                    let mappedQuiz = new QuizC(
-                        quiz[i].quiz,
-                        quiz[i].correct_answers,
-                        quiz[i].tags
-                    );
-                    mappedQuiz.id = quiz[i].id;
-                    mapping.push(mappedQuiz);
-                }
-
-            } else {
-                var mapping = new QuizC(
+                let mapping = new QuizC(
                     quiz.quiz,
                     quiz.correct_answers,
                     quiz.tags
                 );
                 mapping.id = quiz.id;
+
+                return mapping;
+            }
+
+            if (Array.isArray(quiz)) {
+
+                var mapping = [];
+                for (let i = 0, length = quiz.length; i < length; i++) {
+
+                    mapping.push(fillOne(quiz[i]));
+                }
+
+            } else {
+                var mapping = fillOne(quiz)
             }
             resolve(mapping);
         });
