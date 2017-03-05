@@ -24,6 +24,20 @@ module.exports = class QuizRepository {
         });
     }
 
+    getById(id) {
+
+        return new Promise((resolve, reject) => {
+
+            this._orm.findOne({
+                id: id
+            }).then((quiz) => {
+                resolve(this._mapper.map(quiz))
+            }).catch((err) => {
+                reject(err);
+            });
+        });
+    }
+
     getByTags(tags) {
 
         return new Promise((resolve, reject) => {
