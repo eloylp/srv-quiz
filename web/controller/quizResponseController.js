@@ -17,7 +17,12 @@ module.exports = class QuizResponseController {
 
         }).catch((err) => {
 
-            next(err);
+            if (err.statusCode == 404) {
+                res.status = err.statusCode;
+                res.json({"message": "Not found"})
+            } else {
+                next(err);
+            }
         });
     }
 }
