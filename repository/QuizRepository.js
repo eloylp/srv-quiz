@@ -106,4 +106,31 @@ module.exports = class QuizRepository {
             });
         });
     }
+
+    remove(quiz) {
+
+        return new Promise((resolve, reject) => {
+
+            this._orm.destroy(
+                {id: quiz.id}
+            ).then((quiz) => {
+                resolve(this._mapper.map(quiz));
+            }).catch((err) => {
+                reject(err);
+            });
+        });
+
+    }
+
+    removeAll() {
+
+        return new Promise((resolve, reject) => {
+
+            this._orm.destroy().then((quiz) => {
+                resolve(this._mapper.map(quiz));
+            }).catch((err) => {
+                reject(err);
+            });
+        });
+    }
 }

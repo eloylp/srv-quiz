@@ -85,5 +85,30 @@ module.exports = class QuizController {
         })
 
     }
+
+    remove(req, res, next) {
+
+        let remove = new QuizC(null, null, null);
+
+        remove.id = req.params.id;
+
+        req.app.services.quizRemoveService.remove(remove).then((removedQuiz) => {
+
+            res.json(removedQuiz);
+
+        }).catch((err) => {
+            next(err);
+        })
+
+    }
+
+    removeAll(req, res, next) {
+
+        req.app.services.quizRemoveService.removeAll().then((result) => {
+            res.json(result);
+        }).catch((err) => {
+            next(err);
+        });
+    }
 }
 

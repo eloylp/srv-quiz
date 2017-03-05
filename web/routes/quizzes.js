@@ -8,5 +8,7 @@ const QuizController = new QuizControllerC();
 router.get('/', QuizController.get);
 router.post('/', QuizController.add);
 router.put('/:id', QuizController.update);
+router.delete('/:id', QuizController.remove);
+router.delete('/', QuizController.removeAll);
 
 module.exports = router;
