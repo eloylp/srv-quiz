@@ -81,4 +81,29 @@ module.exports = class QuizRepository {
             });
         });
     }
+
+    update(quiz) {
+
+        return new Promise((resolve, reject) => {
+
+            let update = {}
+
+            if (quiz.correctAnswers) {
+                update.correct_answers = quiz.correctAnswers;
+            }
+
+            if (quiz.tags) {
+                update.tags = quiz.tags;
+            }
+
+            this._orm.update(
+                {id: quiz.id},
+                update
+            ).then((quiz) => {
+                resolve(this._mapper.map(quiz));
+            }).catch((err) => {
+                reject(err);
+            });
+        });
+    }
 }

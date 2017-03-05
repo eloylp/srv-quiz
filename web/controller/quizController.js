@@ -65,5 +65,25 @@ module.exports = class QuizController {
             req.app.services.quizListService.getAll().then(onSuccess).catch(onError);
         }
     }
+
+    update(req, res, next) {
+
+        let update = new QuizC(
+            null,
+            req.body.correctAnswers,
+            req.body.tags
+        );
+
+        update.id = req.params.id;
+
+        req.app.services.quizUpdateService.update(update).then((updatedQuiz) => {
+
+            res.json(updatedQuiz);
+
+        }).catch((err) => {
+            next(err);
+        })
+
+    }
 }
 

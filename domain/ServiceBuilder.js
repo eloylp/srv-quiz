@@ -1,6 +1,9 @@
+'use strict';
+
 const QuizAddServiceC = require('./quizAddService/QuizAddService');
 const QuizListServiceC = require('./quizListService/QuizListService');
 const QuizResponseServiceC = require('./quizResponseService/QuizResponseService');
+const QuizUpdateServiceC = require('./quizUpdateService/QuizUpdateService');
 const RepositoryBuilderC = require('./../repository/RepositoryBuilder');
 
 module.exports = class ServiceBuilder {
@@ -14,8 +17,9 @@ module.exports = class ServiceBuilder {
             repositoryBuilder.build().then((repositories) => {
                 resolve({
                     quizAddService: new QuizAddServiceC(repositories.quiz),
+                    quizListService: new QuizListServiceC(repositories.quiz),
                     quizResponseService: new QuizResponseServiceC(repositories.quiz, repositories.quizResponse),
-                    quizListService: new QuizListServiceC(repositories.quiz)
+                    quizUpdateService: new QuizUpdateServiceC(repositories.quiz)
                 });
 
             }).catch((err) => {
