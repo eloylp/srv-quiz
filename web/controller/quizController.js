@@ -25,7 +25,28 @@ module.exports = class QuizController {
     }
 
     get(req, res, next) {
-        res.send('quiz');
+
+        let onSuccess = (quizes) => {
+            res.json(quizes)
+        }
+        let onError = (err) => {
+            next(err);
+        }
+
+        let quizListService = new QuizListServiceC(req.app.repositories.quiz);
+
+        if (req.query.byTags && req.query.random) {
+            quizListService.getByTagsRandomized(req.query.byTags).then(onSuccess).catch(onError);
+
+        } else if (req.query.byTags) {
+            quizListService.getByTags(req.query.byTags).then(onSuccess).catch(onError);
+
+        } else if (req.query.random) {
+            quizListService.getRandomized().then(onSuccess).catch(onError);
+
+        } else {
+            quizListService.getAll().then(onSuccess).catch(onError);
+        }
     }
 }
 
