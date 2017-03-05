@@ -1,6 +1,7 @@
 version: "2"
 services:
   nodejs:
+    restart: always
     image: quiz-server
     user: node
     working_dir: /usr/src/app
@@ -14,6 +15,7 @@ services:
     depends_on:
       - "mongodb"
   mongodb:
+    restart: always
     image: mongo:latest
     expose:
       - "27017"
