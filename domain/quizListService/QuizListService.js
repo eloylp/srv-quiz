@@ -20,6 +20,11 @@ module.exports = class QuizListService {
         return this._quizRepository.getByTags(tags.split(","));
     }
 
+    getById(id) {
+
+        return this._quizRepository.getById(id);
+    }
+
     getByTagsRandomized(tags) {
 
         return new Promise((resolve, reject) => {

@@ -6,6 +6,7 @@ let QuizControllerC = require('./../controller/quizController');
 const QuizController = new QuizControllerC();
 
 router.get('/', QuizController.get);
+router.get('/:id', QuizController.getById);
 router.post('/', QuizController.add);
 router.put('/:id', QuizController.update);
 router.delete('/:id', QuizController.remove);

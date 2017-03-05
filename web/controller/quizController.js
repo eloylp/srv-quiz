@@ -43,6 +43,20 @@ module.exports = class QuizController {
         });
     }
 
+    getById(req, res, next) {
+
+        req.app.services.quizListService.getById(req.params.id).then((quiz) => {
+            res.json(quiz)
+        }).catch((err) => {
+            if (err.statusCode == 404) {
+                res.status = err.statusCode;
+                res.json({"message": "Not found"})
+            } else {
+                next(err);
+            }
+        });
+    }
+
     get(req, res, next) {
 
         let onSuccess = (quizes) => {

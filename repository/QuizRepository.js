@@ -28,7 +28,14 @@ module.exports = class QuizRepository {
             this._orm.findOne({
                 id: id
             }).then((quiz) => {
-                resolve(this._mapper.map(quiz))
+
+                if (quiz) {
+                    resolve(this._mapper.map(quiz))
+                } else {
+                    let error = new Error("Not Found");
+                    error.statusCode = 404;
+                    throw error;
+                }
             }).catch((err) => {
                 reject(err);
             });
