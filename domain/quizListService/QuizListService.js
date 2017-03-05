@@ -26,9 +26,13 @@ module.exports = class QuizListService {
 
             this.getByTags(tags).then((quizes) => {
 
-                let quiz = quizes[this._randomizer.byLength(quizes.length)];
-                quiz.correctAnswers = [];
-                resolve(quiz);
+                if (quizes.length) {
+                    let quiz = quizes[this._randomizer.byLength(quizes.length)];
+                    quiz.correctAnswers = [];
+                    resolve(quiz);
+                } else {
+                    resolve(quizes);
+                }
 
             }).catch((err) => {
                 reject(err);
@@ -42,10 +46,13 @@ module.exports = class QuizListService {
 
             this._quizRepository.getAll().then((quizes) => {
 
-                let quiz = quizes[this._randomizer.byLength(quizes.length)];
-                quiz.correctAnswers = [];
-                resolve(quiz);
-
+                if (quizes.length) {
+                    let quiz = quizes[this._randomizer.byLength(quizes.length)];
+                    quiz.correctAnswers = [];
+                    resolve(quiz);
+                } else {
+                    resolve(quizes);
+                }
             }).catch((err) => {
                 reject(err);
             });
