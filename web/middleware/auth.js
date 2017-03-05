@@ -1,8 +1,13 @@
+'use strict';
+
+
 exports.check = function () {
 
     return function (req, res, next) {
 
-        if (req.app.get('config')['authToken'] === req.header("Authorization")) {
+        let authService = req.app.services.authService;
+
+        if (authService.checkToken(req.header("Authorization"), req.app.get('config')['authToken'])) {
             next();
         } else {
             var err = new Error("Incorrect auth token.");

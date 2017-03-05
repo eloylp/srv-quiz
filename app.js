@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const config = require("./config/config");
 const ServiceBuilderC = require("./domain/ServiceBuilder");
 const ServiceBuilder = new ServiceBuilderC();
+const authMiddleware = require('./web/middleware/auth');
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.set('x-powered-by', config.xPoweredBy);
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
+app.use(authMiddleware.check());
 
 const index = require("./web/routes/index");
 const quizzes = require("./web/routes/quizzes");

@@ -1,5 +1,6 @@
 'use strict';
 
+const AuthServiceC = require('./authService/AuthService');
 const QuizAddServiceC = require('./quizAddService/QuizAddService');
 const QuizListServiceC = require('./quizListService/QuizListService');
 const QuizResponseServiceC = require('./quizResponseService/QuizResponseService');
@@ -17,6 +18,7 @@ module.exports = class ServiceBuilder {
 
             repositoryBuilder.build().then((repositories) => {
                 resolve({
+                    authService: new AuthServiceC(),
                     quizAddService: new QuizAddServiceC(repositories.quiz),
                     quizListService: new QuizListServiceC(repositories.quiz),
                     quizResponseService: new QuizResponseServiceC(repositories.quiz, repositories.quizResponse),
