@@ -6,18 +6,40 @@ module.exports = class QuizController {
 
     add(req, res, next) {
 
-        let quiz = new QuizC(
-            req.body.question,
-            req.body.correctAnswers,
-            req.body.tags
-        );
+        var quiz = [];
 
-        req.app.services.quizAddService.add(quiz).then((quiz) => {
-            res.json(quiz);
+        let fillOne = function (quiz) {
 
-        }).catch((err) => {
+            return new QuizC(
+                quiz.question,
+                quiz.correctAnswers,
+                quiz.tags
+            );
+        }
 
-            next(err);
+        new Promise((resolve, reject) => {
+
+            if (Array.isArray(req.body)) {
+
+                for (let i = 0, length = req.body.length; i < length; i++) {
+                    quiz.push(fillOne(req.body[i]));
+                }
+
+            } else {
+                quiz = fillOne(req.body)
+            }
+
+            resolve(quiz);
+
+        }).then((quiz) => {
+
+            req.app.services.quizAddService.add(quiz).then((quiz) => {
+                res.json(quiz);
+
+            }).catch((err) => {
+
+                next(err);
+            });
         });
     }
 

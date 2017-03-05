@@ -53,11 +53,28 @@ module.exports = class QuizRepository {
 
         return new Promise((resolve, reject) => {
 
-            this._orm.create({
-                "quiz": quiz.question,
-                "correct_answers": quiz.correctAnswers,
-                "tags": quiz.tags
-            }).then((quiz) => {
+            let elements = [];
+            let fillOne = function (quiz) {
+                return {
+                    "quiz": quiz.question,
+                    "correct_answers": quiz.correctAnswers,
+                    "tags": quiz.tags
+                }
+            }
+
+            if (Array.isArray(quiz)) {
+
+                for (let i = 0, length = quiz.length; i < length; i++) {
+
+                    elements.push(fillOne(quiz[i]));
+                }
+
+            } else {
+
+                elements = fillOne(quiz);
+            }
+
+            this._orm.create(elements).then((quiz) => {
                 resolve(this._mapper.map(quiz));
             }).catch((err) => {
                 reject(err);
