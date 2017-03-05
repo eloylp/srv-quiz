@@ -13,13 +13,10 @@ module.exports = class QuizRepository {
 
         return new Promise((resolve, reject) => {
 
-            this._orm.find().then((quizes, err) => {
-
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(this._mapper.map(quizes))
-                }
+            this._orm.find().then((quizes) => {
+                resolve(this._mapper.map(quizes));
+            }).catch((err) => {
+                reject(err);
             });
         });
     }
@@ -43,17 +40,12 @@ module.exports = class QuizRepository {
         return new Promise((resolve, reject) => {
 
             this._orm.find({
-                tags: {
-                    $in: tags
-                }
-            }).then((quizes, err) => {
-
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(this._mapper.map(quizes))
-                }
-            });
+                tags: {$in: tags}
+            }).then((quizes) => {
+                resolve(this._mapper.map(quizes));
+            }).catch((err) => {
+                reject(err);
+            })
         });
     }
 
@@ -65,13 +57,10 @@ module.exports = class QuizRepository {
                 "quiz": quiz.question,
                 "correct_answers": quiz.correctAnswers,
                 "tags": quiz.tags
-            }).then((quiz, err) => {
-
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(this._mapper.map(quiz));
-                }
+            }).then((quiz) => {
+                resolve(this._mapper.map(quiz));
+            }).catch((err) => {
+                reject(err);
             });
         });
     }

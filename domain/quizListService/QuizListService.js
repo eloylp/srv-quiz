@@ -29,6 +29,9 @@ module.exports = class QuizListService {
                 let quiz = quizes[this._randomizer.byLength(quizes.length)];
                 quiz.correctAnswers = [];
                 resolve(quiz);
+
+            }).catch((err) => {
+                reject(err);
             });
         });
     }
@@ -42,8 +45,10 @@ module.exports = class QuizListService {
                 let quiz = quizes[this._randomizer.byLength(quizes.length)];
                 quiz.correctAnswers = [];
                 resolve(quiz);
-            });
 
+            }).catch((err) => {
+                reject(err);
+            });
         });
     }
 }
