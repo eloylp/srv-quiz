@@ -1,6 +1,6 @@
 'use strict';
 
-const QuizC = require('./../../domain/quizAddService/Quiz');
+const QuizC = require('./../../domain/Quiz');
 
 module.exports = class QuizController {
 
