@@ -1,12 +1,10 @@
 'use strict';
 
-const QuizResponseMapperC = require("./QuizResponseMapper");
-
 module.exports = class QuizResponseRepository {
 
-    constructor(orm) {
+    constructor(orm, mapper) {
         this._orm = orm
-        this._mapper = new QuizResponseMapperC();
+        this._mapper = mapper;
     }
 
     add(quizResponse) {

@@ -1,7 +1,11 @@
 'use strict';
 
 const QuizRepositoryC = require('./QuizRepository');
+const QuizMapperC = require('./QuizMapper');
+
 const QuizResponseRepositoryC = require('./QuizResponseRepository');
+const QuizResponseMapperC = require("./QuizResponseMapper");
+
 
 const Waterline = require('waterline');
 const WaterlineConfig = require('./../persistence/waterline/config/config');
@@ -25,8 +29,8 @@ module.exports = class RepositoryBuilder {
                     reject(err);
                 } else {
                     resolve({
-                        quiz: new QuizRepositoryC(models.collections.quiz),
-                        quizResponse: new QuizResponseRepositoryC(models.collections.quizresponse)
+                        quiz: new QuizRepositoryC(models.collections.quiz, new QuizMapperC()),
+                        quizResponse: new QuizResponseRepositoryC(models.collections.quizresponse, new QuizResponseMapperC())
                     });
                 }
             });
