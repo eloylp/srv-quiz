@@ -1,5 +1,5 @@
 # SRV-QUIZ #
-![Project frozen](https://img.shields.io/badge/status-frozen-blue.png) ![Project unmaintained](https://img.shields.io/badge/project-unmaintained-red.svg)
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 Srv - quiz is an application server intended to bring us a quiz system where you can submit questions and later
 retrieve them for asking other people, registering answers.
